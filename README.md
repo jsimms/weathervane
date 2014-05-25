@@ -1,6 +1,7 @@
 # weathervane
 
-*Ruby app that receives an http request, creates a txt file, and displays the data.*
+A Sinatra app that gets an http request, creates a txt file, and displays the data.
+Used as a companion web app to an arduino setup. 
 
 ### to-do
 1. Make this sucker a sinatra app and get it up and running locally and on heroku.
