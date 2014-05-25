@@ -10,4 +10,3 @@ Used as a companion web app to an arduino setup.
 4. Create HTML that displays the data
 5. Use jquery to update the page every second or so
 6. Do a little CSS for style points
-7. Figure out how to host on beanstalk or heroku
