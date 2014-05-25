@@ -1,3 +1,3 @@
-require "myapp"
+require "weathervane"
 
 run Sinatra::Application
