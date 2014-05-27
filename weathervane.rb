@@ -9,5 +9,14 @@ get '/' do
 end
 
 get '/sensor/' do
-  "Temp is: #{params[:temp]} and Humidity is #{params[:hum]}"
+
+  File.open 'temp_data.txt', 'w' do |f|
+    f.write params[:temp]
+  end
+
+  File.open 'hum_data.txt', 'w' do |f|
+    f.write params[:hum]
+  end 
+
+  "Temperature is #{params[:temp]} and Humidity is #{params[:hum]}"
 end
