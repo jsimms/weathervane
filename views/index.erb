@@ -1,1 +1,30 @@
-<p>Hello World. It's <%="#{Time.now}"%> on this particular server.</p>
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Compost Monitor - aka "weathervane"</title>
+  </head>
+
+  <body>
+
+    <h1>Hi there!</h1>
+    <p>It's <%="#{Time.now}"%>.</p>
+
+    <div class="data">
+      <div class="dataTitle">Pile Tempurature:</div>
+      <div id="tempDisplay"><%=temp_read%></div>
+    </div>
+
+    <div class="data">
+      <div class="dataTitle">Pile Humidity:</div>
+      <div id="humDisplay"><%=hum_read%></div>
+    </div>
+
+  <script type="text/javascript">
+  </script>
+
+  </body>
+
+</html>

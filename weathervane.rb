@@ -1,6 +1,27 @@
 require 'rubygems'
 require 'sinatra'
 
+# Some Methods
+def sensor_read
+  File.open 'temp_data.txt', 'w' do |f|
+    f.write params[:temp]
+  end
+
+  File.open 'hum_data.txt', 'w' do |f|
+    f.write params[:hum]
+  end
+end
+
+def temp_read
+  temp = File.read 'temp_data.txt'
+  temp.to_s
+end
+
+def hum_read
+  hum = File.read 'hum_data.txt'
+  hum.to_s
+end
+
 def checkfiles
   if (File.exist?('temp_data.txt') && File.exist?('hum_data.txt'))
     'Both files are here'
@@ -9,36 +30,24 @@ def checkfiles
   end
 end
 
-def temp_read
-  temp = File.read 'temp_data.txt'
-  "Temperature is #{temp}"
-end
-
-def hum_read
-  hum = File.read 'hum_data.txt'
-  "Humidity is #{hum}"
-end
-
-# In Sinatra, a route is an HTTP method paired with a URL-matching pattern.
-# Each route is associated with a block:
+# Some Routes
 
 get '/' do
   erb :index
 end
 
-get '/sensor/' do
-
-  File.open 'temp_data.txt', 'w' do |f|
-    f.write params[:temp]
-  end
-
-  File.open 'hum_data.txt', 'w' do |f|
-    f.write params[:hum]
-  end
-
-  "Temperature is #{params[:temp]} and Humidity is #{params[:hum]}"
+get '/sensor' do
+  sensor_read
 end
 
-get '/status/' do
+get '/temp' do
+  temp_read
+end
+
+get '/hum' do
+  hum_read
+end
+
+get '/status' do
   erb :status
 end
