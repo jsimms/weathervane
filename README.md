@@ -4,7 +4,7 @@ A Sinatra app that gets an http request, creates a txt file, and displays the da
 Used as a companion web app to an arduino setup.
 
 ### to-do
-3. Create method that reads and display data (temp.rb and hum.rb)
 4. Create HTML that displays the data
 5. Use jquery to update the page every second or so
 6. Do a little CSS for style points
+7. Cleanup the checks into one status page

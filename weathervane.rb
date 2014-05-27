@@ -1,6 +1,24 @@
 require 'rubygems'
 require 'sinatra'
 
+def checkfiles
+  if (File.exist?('temp_data.txt') && File.exist?('hum_data.txt'))
+    'Both files are here'
+  else
+    "One or both of the data files are missing"
+  end
+end
+
+def temp_read
+  temp = File.read 'temp_data.txt'
+  "Temperature is #{temp}"
+end
+
+def hum_read
+  hum = File.read 'hum_data.txt'
+  "Humidity is #{hum}"
+end
+
 # In Sinatra, a route is an HTTP method paired with a URL-matching pattern.
 # Each route is associated with a block:
 
@@ -21,12 +39,6 @@ get '/sensor/' do
   "Temperature is #{params[:temp]} and Humidity is #{params[:hum]}"
 end
 
-get '/checkfiles/' do
-
-  if (File.exist?('temp_data.txt') && File.exist?('hum_data.txt'))
-    "temp_data and hum_data exist"
-  else
-    "one of the files does not exist"
-  end
-
+get '/status/' do
+  erb :status
 end
