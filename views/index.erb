@@ -10,19 +10,28 @@
   <body>
 
     <h1>Hi there!</h1>
-    <p>It's <%="#{Time.now}"%>.</p>
+
+    <div class="data">
+      <div class="dataTitle">Time (at server):</div>
+      <div id="timeDisplay">Getting time....</div>
+    </div>
 
     <div class="data">
       <div class="dataTitle">Pile Tempurature:</div>
-      <div id="tempDisplay"><%=temp_read%></div>
+      <div id="tempDisplay">Getting temperature...</div>
     </div>
 
     <div class="data">
       <div class="dataTitle">Pile Humidity:</div>
-      <div id="humDisplay"><%=hum_read%></div>
+      <div id="humDisplay">Getting humidity...</div>
     </div>
 
   <script type="text/javascript">
+    setInterval(function(){
+      $("#timeDisplay").load("/time");
+      $("#tempDisplay").load("/sensor/temp");
+      $("#humDisplay").load("/sensor/hum");
+    }, 5000);
   </script>
 
   </body>

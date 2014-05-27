@@ -2,6 +2,10 @@ require 'rubygems'
 require 'sinatra'
 
 # Some Methods
+def time_read
+  Time.now.asctime
+end
+
 def sensor_read
   File.open 'temp_data.txt', 'w' do |f|
     f.write params[:temp]
@@ -36,15 +40,19 @@ get '/' do
   erb :index
 end
 
+get '/time' do
+  time_read
+end
+
 get '/sensor' do
   sensor_read
 end
 
-get '/temp' do
+get '/sensor/temp' do
   temp_read
 end
 
-get '/hum' do
+get '/sensor/hum' do
   hum_read
 end
 
