@@ -7,3 +7,7 @@ require 'sinatra'
 get '/' do
   erb :index
 end
+
+get '/sensor/' do
+  "Temp is: #{params[:temp]} and Humidity is #{params[:hum]}"
+end
