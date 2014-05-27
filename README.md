@@ -1,6 +1,6 @@
 # weathervane
 
-Weathervane is the partner Sinatra app to my [compost monitor sketch] (https://github.com/jsimms/compost_monitor)
+Weathervane is the partner Sinatra app to my [compost monitor sketch] (https://github.com/jsimms/compost_monitor).
 It simply grabs the get request sent from the Arduino and displays it on a webpage.
 
 
