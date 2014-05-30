@@ -35,7 +35,6 @@ def checkfiles
 end
 
 # Some Routes
-
 get '/' do
   erb :index
 end
