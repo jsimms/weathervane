@@ -1,12 +1,18 @@
 require 'rubygems'
 require 'sinatra'
 
-# Some Methods
-def time_read
+get '/' do
+  erb :index
+end
+
+get '/time' do
   Time.now.asctime
 end
 
-def sensor_read
+get '/sensor' do
+
+  #todo, only write the file if the params are present.
+
   File.open 'temp_data.txt', 'w' do |f|
     f.write params[:temp]
   end
@@ -14,47 +20,29 @@ def sensor_read
   File.open 'hum_data.txt', 'w' do |f|
     f.write params[:hum]
   end
+
+  "OK, Temp: #{params[:temp]} & Hum: #{params[:hum]}" 
+
 end
 
-def temp_read
+get '/sensor/temp' do
   temp = File.read 'temp_data.txt'
   temp.to_s
 end
 
-def hum_read
+get '/sensor/hum' do
   hum = File.read 'hum_data.txt'
   hum.to_s
 end
 
-def checkfiles
+get '/status' do
   if (File.exist?('temp_data.txt') && File.exist?('hum_data.txt'))
     'Both files are here'
+  elsif (File.exist?('temp_data.txt') && !File.exist?('hum_data.txt'))
+    "hum file is missing."
+  elsif (!File.exist?('temp_data.txt') && File.exist?('hum_data.txt'))
+    "temp file is missing"
   else
-    "One or both of the data files are missing"
+    "Both of the data files are missing"
   end
-end
-
-# Some Routes
-get '/' do
-  erb :index
-end
-
-get '/time' do
-  time_read
-end
-
-get '/sensor' do
-  sensor_read
-end
-
-get '/sensor/temp' do
-  temp_read
-end
-
-get '/sensor/hum' do
-  hum_read
-end
-
-get '/status' do
-  erb :status
 end
