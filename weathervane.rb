@@ -10,19 +10,13 @@ get '/time' do
 end
 
 get '/sensor' do
-
-  #todo, only write the file if the params are present.
-
   File.open 'temp_data.txt', 'w' do |f|
     f.write params[:temp]
   end
-
   File.open 'hum_data.txt', 'w' do |f|
     f.write params[:hum]
   end
-
-  "OK, Temp: #{params[:temp]} & Hum: #{params[:hum]}" 
-
+  "OK, Temp: #{params[:temp]} & Hum: #{params[:hum]}"
 end
 
 get '/sensor/temp' do
